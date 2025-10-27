@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Upcycle Rangers</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">Home</a> |
+      <a href="about.html">About</a> |
+      <a href="contact.html">Contact</a>
+    </nav>
+    
+    <h1 class="title">Home</h1>
+    <p id="currentTime"></p>
+    <p>Welcome to Upcycle Rangers - we're dedicated to environmental conservation through creative recycling!</p>
+    
+    <script src="script.js"></script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>About Upcycle Rangers</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    
+    <h1 class="title">About Us</h1>
+    <p>Upcycle Rangers is a non-profit organization focused on environmental conservation through innovative recycling solutions.</p>
+    <p>We believe in transforming waste into valuable resources and inspiring communities to adopt sustainable practices.</p>
+    
+    <script src="script.js"></script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contact Upcycle Rangers</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    
+    <h1 class="title">Contact Us</h1>
+    <p>Email: info@upcyclerangers.org</p>
+    <p>Phone: (254) 7456-7890</p>
+    <p>Address: 43226 Parkroad Street, Nairobi City</p>
+    
+    <h2>Leave a Comment</h2>
+    <form id="commentForm">
+      <p>
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required>
+      </p>
+      <p>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required>
+      </p>
+      <p>
+        <label for="comment">Comment:</label><br>
+        <textarea id="comment" name="comment" rows="4" cols="50" required></textarea>
+      </p>
+      <p>
+        <input type="submit" value="Submit Comment">
+      </p>
+    </form>
+    
+    <div id="commentsSection"></div>
+    
+    <script src="script.js"></script>
+  </body>
+</html>
+styles.css
+body{
+  padding: 25px;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  color: #5C6AC4;
+}
+
+nav {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #5C6AC4;
+  margin-right: 15px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+form {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 500px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 10px 0;
+  box-sizing: border-box;
+}
+
+form input[type="submit"] {
+  background-color: #5C6AC4;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+  background-color: #4a57a2;
+}
+
+#commentsSection {
+  margin-top: 30px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+script.js
+function showTime() {
+  document.getElementById('currentTime').innerHTML = new Date().toUTCString();
+}
+
+// Only run on home page
+if (document.getElementById('currentTime')) {
+  showTime();
+  setInterval(function () {
+    showTime();
+  }, 1000);
+}
+
+// Handle comment form submission
+if (document.getElementById('commentForm')) {
+  document.getElementById('commentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const comment = document.getElementById('comment').value;
+    
+    
+    
+    // Add to comments section
+    document.getElementById('commentsSection').prepend(commentElement);
+    
+    // Reset form
+    document.getElementById('commentForm').reset();
+  });
+}
